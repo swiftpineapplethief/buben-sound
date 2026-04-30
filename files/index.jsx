@@ -455,7 +455,7 @@ const styles = {
   },
   heroSub: {
     fontSize: "1.05rem",
-    color: "#bbb",
+    color: "#ccc",
     lineHeight: 1.7,
     marginBottom: "2.5rem",
     maxWidth: "420px",
