@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   }
 
   const notifyEmail = process.env.NOTIFY_EMAIL;
-  const fromEmail = process.env.FROM_EMAIL || "bookings@bubensound.com";
+  const fromEmail = process.env.FROM_EMAIL || "sounds.of.buben@gmail.com";
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
