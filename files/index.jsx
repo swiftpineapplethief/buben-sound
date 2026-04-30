@@ -103,13 +103,12 @@ export default function App() {
       <section id="home" style={styles.hero}>
         <div style={styles.heroInner}>
           <p style={styles.eyebrow}>— Sound Rental · Nashville, TN</p>
-          <h1 style={styles.heroTitle}>
-            Big Sound.<br />
-            <span style={styles.heroTitleStroke}>Simple Rental.</span>
-          </h1>
           <p style={styles.heroSub}>
             Professional PA system with mixer available for your event. Book it through the power of the super internet highway
           </p>
+          <div style={styles.heroVisual}>
+          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
+          </div>
           <div style={styles.heroCtas}>
             <button style={styles.ctaPrimary} onClick={() => scrollTo("book")}>
               Book Now
@@ -119,9 +118,7 @@ export default function App() {
             </button>
           </div>
         </div>
-        <div style={styles.heroVisual}>
-          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
-        </div>
+        
         
       </section>
 
@@ -494,8 +491,8 @@ const styles = {
     justifyContent: "center",
   },
   speakerBox: {
-    width: "1200px",
-    height: "628px",
+    width: "900",
+    height: "471px",
     objectFit: "cover",    // keeps image proportions without stretching,
   },
   divider: {
