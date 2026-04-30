@@ -209,11 +209,11 @@ export default function App() {
               <div style={styles.formGrid}>
                 <div style={styles.fieldGroup}>
                   <label style={styles.label}>Full Name *</label>
-                  <input name="name" value={form.name} onChange={handleFormChange} style={styles.input} placeholder="Jane Smith" />
+                  <input name="name" value={form.name} onChange={handleFormChange} style={styles.input} placeholder="Grimblewald the Wise" />
                 </div>
                 <div style={styles.fieldGroup}>
                   <label style={styles.label}>Email *</label>
-                  <input name="email" type="email" value={form.email} onChange={handleFormChange} style={styles.input} placeholder="jane@email.com" />
+                  <input name="email" type="email" value={form.email} onChange={handleFormChange} style={styles.input} placeholder="gtwise567@gmail.com" />
                 </div>
                 <div style={styles.fieldGroup}>
                   <label style={styles.label}>Phone</label>
@@ -221,7 +221,7 @@ export default function App() {
                 </div>
                 <div style={styles.fieldGroup}>
                   <label style={styles.label}>Event Type</label>
-                  <input name="eventType" value={form.eventType} onChange={handleFormChange} style={styles.input} placeholder="e.g. Birthday party, Band rehearsal" />
+                  <input name="eventType" value={form.eventType} onChange={handleFormChange} style={styles.input} placeholder="e.g. House Party, Wizard Convention, etc." />
                 </div>
                 <div style={styles.fieldGroup}>
                   <label style={styles.label}>Start Date *</label>
@@ -237,7 +237,7 @@ export default function App() {
                 <textarea name="notes" value={form.notes} onChange={handleFormChange} style={styles.textarea} rows={4} placeholder="Venue address, setup time, questions..." />
               </div>
               {formStatus === "error" && (
-                <p style={styles.errorMsg}>Something went wrong. Please email us directly at hello@bubensound.com</p>
+                <p style={styles.errorMsg}>Something went wrong. Please email us directly at sounds.of.buben@gmail.com or (615) 403-7118</p>
               )}
               <button
                 style={{ ...styles.ctaPrimary, marginTop: "1.5rem", opacity: formStatus === "sending" ? 0.6 : 1 }}
