@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Replace with your actual Google Calendar embed src from calendar.google.com > Settings > your calendar > "Integrate calendar"
-const GOOGLE_CAL_EMBED = "https://calendar.google.com/calendar/embed?src=sounds.of.buben%40gmail.com&ctz=UTC";
+const GOOGLE_CAL_EMBED = "https://calendar.google.com/calendar/embed?src=sounds.of.buben%40gmail.com&ctz=UTC&mode=MONTH&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0";
 
 const NAV_LINKS = ["Home", "Gear", "Book", "Contact"];
 
