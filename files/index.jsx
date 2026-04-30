@@ -10,9 +10,12 @@ const GEAR = {
   description:
     "Professional-grade 15-inch PA speaker with a full-channel mixer. Ideal for small venues, outdoor events, rehearsals, parties, and presentations.",
   specs: [
-    { label: "Speaker", value: 'Electro Voice ZLX-15 BT' },
-    { label: "Power", value: "1000W Peak" }
-    { label: "Includes", value: "Cables, stand, mixer, mic" },
+    { label: "Speaker", value: '15" Full-Range PA' },
+    { label: "Power", value: "1000W Peak" },
+    { label: "Mixer", value: "Multi-channel with EQ" },
+    { label: "Coverage", value: "Up to ~200 people" },
+    { label: "Includes", value: "Cables, stand, setup guide" },
+    { label: "Rental Period", value: "Daily / Weekend" },
   ],
 };
 
