@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-const CAL_EMBED_URL = "https://cal.com/buben-sound/pa-system-rental";
+// Replace with your actual Google Calendar embed src from calendar.google.com > Settings > your calendar > "Integrate calendar"
+const GOOGLE_CAL_EMBED = "https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID%40gmail.com&ctz=America%2FChicago&mode=MONTH&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&bgcolor=%23080808&color=%23ffffff";
 
 const NAV_LINKS = ["Home", "Gear", "Book", "Contact"];
 
@@ -22,12 +23,32 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", startDate: "", endDate: "", eventType: "", notes: "" });
+  const [formStatus, setFormStatus] = useState("idle"); // idle | sending | success | error
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleFormChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.email || !form.startDate || !form.endDate) return;
+    setFormStatus("sending");
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) setFormStatus("success");
+      else setFormStatus("error");
+    } catch {
+      setFormStatus("error");
+    }
+  };
 
   const scrollTo = (id) => {
     setMenuOpen(false);
@@ -162,21 +183,76 @@ export default function App() {
         <p style={styles.sectionEye}>— Availability & Booking</p>
         <h2 style={styles.sectionTitle}>Request a Rental</h2>
         <p style={styles.bookSub}>
-          Select a date below to submit your booking request. All bookings are manually confirmed — you'll hear back within 24 hours.
+          Check the calendar for open dates, then fill out the form below. All bookings are manually confirmed — you'll hear back within 24 hours.
         </p>
+
+        {/* Google Calendar */}
         <div style={styles.calWrapper}>
+          <p style={styles.calLabel}>Availability Calendar</p>
           <iframe
-            src={`https://cal.com/buben-sound/pa-system-rental?embed=true&theme=dark`}
+            src={GOOGLE_CAL_EMBED}
             style={styles.calFrame}
-            title="Booking Calendar"
+            title="Availability Calendar"
             frameBorder="0"
+            scrolling="no"
           />
-          <p style={styles.calNote}>
-            Don't see a time that works?{" "}
-            <a href="mailto:hello@bubensound.com" style={styles.link}>
-              Email us directly.
-            </a>
-          </p>
+          <p style={styles.calNote}>Blocked dates = already booked. Reach out if you're unsure.</p>
+        </div>
+
+        {/* Booking Form */}
+        <div style={styles.formCard}>
+          <p style={styles.formHeading}>Booking Request</p>
+
+          {formStatus === "success" ? (
+            <div style={styles.successBox}>
+              <span style={styles.successIcon}>✓</span>
+              <p style={styles.successTitle}>Request received!</p>
+              <p style={styles.successSub}>We'll confirm your booking within 24 hours.</p>
+            </div>
+          ) : (
+            <>
+              <div style={styles.formGrid}>
+                <div style={styles.fieldGroup}>
+                  <label style={styles.label}>Full Name *</label>
+                  <input name="name" value={form.name} onChange={handleFormChange} style={styles.input} placeholder="Jane Smith" />
+                </div>
+                <div style={styles.fieldGroup}>
+                  <label style={styles.label}>Email *</label>
+                  <input name="email" type="email" value={form.email} onChange={handleFormChange} style={styles.input} placeholder="jane@email.com" />
+                </div>
+                <div style={styles.fieldGroup}>
+                  <label style={styles.label}>Phone</label>
+                  <input name="phone" type="tel" value={form.phone} onChange={handleFormChange} style={styles.input} placeholder="(615) 000-0000" />
+                </div>
+                <div style={styles.fieldGroup}>
+                  <label style={styles.label}>Event Type</label>
+                  <input name="eventType" value={form.eventType} onChange={handleFormChange} style={styles.input} placeholder="e.g. Birthday party, Band rehearsal" />
+                </div>
+                <div style={styles.fieldGroup}>
+                  <label style={styles.label}>Start Date *</label>
+                  <input name="startDate" type="date" value={form.startDate} onChange={handleFormChange} style={styles.input} />
+                </div>
+                <div style={styles.fieldGroup}>
+                  <label style={styles.label}>End Date *</label>
+                  <input name="endDate" type="date" value={form.endDate} onChange={handleFormChange} style={styles.input} />
+                </div>
+              </div>
+              <div style={{ ...styles.fieldGroup, marginTop: "1rem" }}>
+                <label style={styles.label}>Additional Notes</label>
+                <textarea name="notes" value={form.notes} onChange={handleFormChange} style={styles.textarea} rows={4} placeholder="Venue address, setup time, questions..." />
+              </div>
+              {formStatus === "error" && (
+                <p style={styles.errorMsg}>Something went wrong. Please email us directly at hello@bubensound.com</p>
+              )}
+              <button
+                style={{ ...styles.ctaPrimary, marginTop: "1.5rem", opacity: formStatus === "sending" ? 0.6 : 1 }}
+                onClick={handleSubmit}
+                disabled={formStatus === "sending"}
+              >
+                {formStatus === "sending" ? "Sending..." : "Submit Request"}
+              </button>
+            </>
+          )}
         </div>
       </section>
 
@@ -532,20 +608,103 @@ const styles = {
   calWrapper: {
     border: "0.5px solid #1e1e1e",
     overflow: "hidden",
+    marginBottom: "2.5rem",
+  },
+  calLabel: {
+    padding: "0.75rem 1.25rem",
+    fontSize: "0.72rem",
+    letterSpacing: "0.12em",
+    textTransform: "uppercase",
+    color: "#555",
+    borderBottom: "0.5px solid #1a1a1a",
   },
   calFrame: {
     width: "100%",
-    height: "700px",
+    height: "520px",
     border: "none",
     display: "block",
-    background: "#0d0d0d",
+    background: "#080808",
+    colorScheme: "dark",
   },
   calNote: {
     textAlign: "center",
-    padding: "1rem",
-    fontSize: "0.82rem",
-    color: "#555",
+    padding: "0.75rem 1rem",
+    fontSize: "0.78rem",
+    color: "#444",
     borderTop: "0.5px solid #1a1a1a",
+  },
+  formCard: {
+    border: "0.5px solid #1e1e1e",
+    padding: "2.5rem",
+  },
+  formHeading: {
+    fontSize: "1rem",
+    fontWeight: 600,
+    letterSpacing: "0.05em",
+    marginBottom: "2rem",
+    textTransform: "uppercase",
+    color: "#aaa",
+  },
+  formGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "1.25rem",
+  },
+  fieldGroup: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.4rem",
+  },
+  label: {
+    fontSize: "0.72rem",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
+    color: "#555",
+  },
+  input: {
+    background: "#0d0d0d",
+    border: "0.5px solid #2a2a2a",
+    color: "#f0f0f0",
+    padding: "0.65rem 0.9rem",
+    fontSize: "0.9rem",
+    outline: "none",
+    fontFamily: "inherit",
+    width: "100%",
+  },
+  textarea: {
+    background: "#0d0d0d",
+    border: "0.5px solid #2a2a2a",
+    color: "#f0f0f0",
+    padding: "0.65rem 0.9rem",
+    fontSize: "0.9rem",
+    outline: "none",
+    fontFamily: "inherit",
+    width: "100%",
+    resize: "vertical",
+  },
+  errorMsg: {
+    color: "#cc4444",
+    fontSize: "0.82rem",
+    marginTop: "1rem",
+  },
+  successBox: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "3rem 1rem",
+    gap: "0.75rem",
+  },
+  successIcon: {
+    fontSize: "2rem",
+    color: "#f0f0f0",
+  },
+  successTitle: {
+    fontSize: "1.2rem",
+    fontWeight: 600,
+  },
+  successSub: {
+    color: "#666",
+    fontSize: "0.9rem",
   },
   link: {
     color: "#aaa",
