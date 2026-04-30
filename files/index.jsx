@@ -102,7 +102,7 @@ export default function App() {
       {/* HERO */}
       <section id="home" style={styles.hero}>
         <div style={styles.heroVisual}>
-          <img src="/your-image.jpg" alt="PA System" style={styles.heroImg} />
+          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
         </div>
         <div style={styles.heroInner}>
           <p style={styles.eyebrow}>— Sound Rental · Nashville, TN</p>
