@@ -494,9 +494,9 @@ const styles = {
     justifyContent: "center",  // ← horizontal center
   },
   speakerBox: {
-    width: "90%",
-    height: "90%",
-    minHeight: "400px",
+    width: "100%",
+    maxWidth: "420px",    // ← controls max width
+    height: "auto",       // ← lets it scale naturally
     objectFit: "cover",
   },
   divider: {
