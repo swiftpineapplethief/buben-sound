@@ -13,7 +13,7 @@ const GEAR = {
     { label: "Speaker", value: 'Electro Voice ZLX-15 BT' },
     { label: "Power", value: "1000W Peak" }
     { label: "Includes", value: "Cables, stand, mixer, mic" },
-  ],
+  },
 };
 
 export default function App() {
