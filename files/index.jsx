@@ -237,7 +237,7 @@ export default function App() {
                 <textarea name="notes" value={form.notes} onChange={handleFormChange} style={styles.textarea} rows={4} placeholder="Venue address, setup time, questions..." />
               </div>
               {formStatus === "error" && (
-                <p style={styles.errorMsg}>Something went wrong. Please email us directly at hello@bubensound.com</p>
+                <p style={styles.errorMsg}>Something went wrong. Please email us directly at sounds.of.buben@gmail.com or (615) 403-7118</p>
               )}
               <button
                 style={{ ...styles.ctaPrimary, marginTop: "1.5rem", opacity: formStatus === "sending" ? 0.6 : 1 }}
@@ -488,16 +488,20 @@ const styles = {
     transition: "border-color 0.2s",
   },
   heroVisual: {
-    flex: "0 1 480px",        // ← controls image column width
+    heroVisual: {
+    flex: "0 1 55%",           // ← controls how wide the image column is
     display: "flex",
-    alignItems: "center",      // ← vertical center
-    justifyContent: "center",  // ← horizontal center
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",        // ← this is key, clips the image cleanly
+    maxHeight: "100vh",
   },
   speakerBox: {
-    width: "90%",
-    height: "90%",
-    minHeight: "400px",
+    width: "100%",
+    maxWidth: "100%",
+    height: "100vh",       // ← locks it to screen height
     objectFit: "cover",
+    objectPosition: "center",  // ← centers the crop
   },
   divider: {
     height: "0.5px",
