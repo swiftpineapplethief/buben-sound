@@ -10,12 +10,9 @@ const GEAR = {
   description:
     "Professional-grade 15-inch PA speaker with a full-channel mixer. Ideal for small venues, outdoor events, rehearsals, parties, and presentations.",
   specs: [
-    { label: "Speaker", value: '15" Full-Range PA' },
-    { label: "Power", value: "1000W Peak" },
-    { label: "Mixer", value: "Multi-channel with EQ" },
-    { label: "Coverage", value: "Up to ~200 people" },
-    { label: "Includes", value: "Cables, stand, setup guide" },
-    { label: "Rental Period", value: "Daily / Weekend" },
+    { label: "Speaker", value: 'Electro Voice ZLX-15 BT' },
+    { label: "Power", value: "1000W Peak" }
+    { label: "Includes", value: "Cables, stand, mixer, mic" },
   ],
 };
 
@@ -108,7 +105,7 @@ export default function App() {
             <span style={styles.heroTitleStroke}>Simple Rental.</span>
           </h1>
           <p style={styles.heroSub}>
-            Professional PA system with mixer available for your event. Request a booking in minutes.
+            Professional PA system with mixer available for your event. Book it through the power of the super internet highway
           </p>
           <div style={styles.heroCtas}>
             <button style={styles.ctaPrimary} onClick={() => scrollTo("book")}>
@@ -120,10 +117,9 @@ export default function App() {
           </div>
         </div>
         <div style={styles.heroVisual}>
-          <div style={styles.speakerBox}>
-            <SpeakerSVG />
-          </div>
+          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
         </div>
+        
       </section>
 
       {/* DIVIDER */}
@@ -161,10 +157,10 @@ export default function App() {
         <h2 style={styles.sectionTitle}>How It Works</h2>
         <div style={styles.steps}>
           {[
-            { n: "01", t: "Pick a Date", d: "Check the booking calendar for available dates." },
-            { n: "02", t: "Submit Request", d: "Fill in your event details and send a booking request." },
-            { n: "03", t: "Confirmation", d: "We'll confirm your booking within 24 hours." },
-            { n: "04", t: "Pick Up & Rock", d: "Collect the gear, set up, and enjoy the sound." },
+            { n: "01", t: "Pick a Date", d: "Check my calendar for available dates." },
+            { n: "02", t: "Submit Request", d: "Fill in your event details and send a booking request" },
+            { n: "03", t: "Pick Up", d: "I'll send you my address to pick up in East Nashville 37206 :), pay and sign quick contract." },
+            { n: "04", t: "Return", d: "Return on agreed date (please)!." },
           ].map((s) => (
             <div key={s.n} style={styles.stepCard}>
               <span style={styles.stepNum}>{s.n}</span>
@@ -183,7 +179,7 @@ export default function App() {
         <p style={styles.sectionEye}>— Availability & Booking</p>
         <h2 style={styles.sectionTitle}>Request a Rental</h2>
         <p style={styles.bookSub}>
-          Check the calendar for open dates, then fill out the form below. All bookings are manually confirmed — you'll hear back within 24 hours.
+          Check the calendar for open dates, then fill out the form below. All bookings are manually confirmed within 24 hours. Call or text my number if immediate confirmation is needed for last minute events ;).
         </p>
 
         {/* Google Calendar */}
@@ -207,7 +203,7 @@ export default function App() {
             <div style={styles.successBox}>
               <span style={styles.successIcon}>✓</span>
               <p style={styles.successTitle}>Request received!</p>
-              <p style={styles.successSub}>We'll confirm your booking within 24 hours.</p>
+              <p style={styles.successSub}>I'll confirm your booking within 24 hours.</p>
             </div>
           ) : (
             <>
@@ -495,9 +491,9 @@ const styles = {
     justifyContent: "center",
   },
   speakerBox: {
-    width: "220px",
-    height: "300px",
-    filter: "drop-shadow(0 0 40px rgba(255,255,255,0.04))",
+    width: "1200px",
+    height: "628px",
+    objectFit: "cover",    // keeps image proportions without stretching,
   },
   divider: {
     height: "0.5px",
