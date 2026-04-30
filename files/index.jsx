@@ -101,6 +101,9 @@ export default function App() {
 
       {/* HERO */}
       <section id="home" style={styles.hero}>
+        <div style={styles.heroVisual}>
+          <img src="/your-image.jpg" alt="PA System" style={styles.heroImg} />
+        </div>
         <div style={styles.heroInner}>
           <p style={styles.eyebrow}>— Sound Rental · Nashville, TN</p>
           <h1 style={styles.heroTitle}>
@@ -108,7 +111,7 @@ export default function App() {
             <span style={styles.heroTitleStroke}>Simple Rental.</span>
           </h1>
           <p style={styles.heroSub}>
-            Professional PA system with mixer available for your event. Book it through the power of the super internet highway
+            Professional PA system with mixer available for your event. Request a booking in minutes.
           </p>
           <div style={styles.heroCtas}>
             <button style={styles.ctaPrimary} onClick={() => scrollTo("book")}>
@@ -118,9 +121,6 @@ export default function App() {
               See the Gear →
             </button>
           </div>
-        </div>
-        <div style={styles.heroVisual}>
-          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
         </div>
         
       </section>
@@ -423,10 +423,10 @@ const styles = {
   hero: {
     minHeight: "100vh",
     display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "8rem 2.5rem 4rem",
-    gap: "3rem",
+    alignItems: "stretch",
+    justifyContent: "flex-start",
+    paddingTop: "4rem",
+    gap: "0",
     position: "relative",
     zIndex: 1,
     flexWrap: "wrap",
@@ -434,6 +434,10 @@ const styles = {
   heroInner: {
     flex: "1 1 380px",
     maxWidth: "560px",
+    padding: "6rem 2.5rem 4rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   eyebrow: {
     fontSize: "0.75rem",
@@ -488,15 +492,15 @@ const styles = {
     transition: "border-color 0.2s",
   },
   heroVisual: {
-    flex: "0 1 260px",
+    flex: "0 1 480px",        // ← controls image column width
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "stretch"
   },
   speakerBox: {
-    width: "1200px",
-    height: "628px",
-    objectFit: "cover",    // keeps image proportions without stretching,
+    width: "100%",
+    height: "100%",
+    minHeight: "500px",
+    objectFit: "cover",
   },
   divider: {
     height: "0.5px",
