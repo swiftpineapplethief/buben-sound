@@ -311,7 +311,7 @@ const styles = {
   root: {
     background: "#080808",
     color: "#f0f0f0",
-    fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
+    fontFamily: "'Space Grotesk', sans-serif",
     minHeight: "100vh",
     position: "relative",
     overflowX: "hidden",
@@ -497,7 +497,8 @@ const styles = {
     width: "100%",
     maxWidth: "420px",    // ← controls max width
     height: "auto",       // ← lets it scale naturally
-    objectFit: "cover",
+    objectFit: "contain",
+    objectPosition: "center",
   },
   divider: {
     height: "0.5px",
