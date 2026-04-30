@@ -103,6 +103,10 @@ export default function App() {
       <section id="home" style={styles.hero}>
         <div style={styles.heroInner}>
           <p style={styles.eyebrow}>— Sound Rental · Nashville, TN</p>
+          <h1 style={styles.heroTitle}>
+            Big Sound.<br />
+            <span style={styles.heroTitleStroke}>Simple Rental.</span>
+          </h1>
           <p style={styles.heroSub}>
             Professional PA system with mixer available for your event. Book it through the power of the super internet highway
           </p>
@@ -114,11 +118,10 @@ export default function App() {
               See the Gear →
             </button>
           </div>
-          <div style={styles.heroVisual}>
-            <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
-          </div>
         </div>
-        
+        <div style={styles.heroVisual}>
+          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
+        </div>
         
       </section>
 
