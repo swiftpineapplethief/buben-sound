@@ -455,7 +455,7 @@ const styles = {
   },
   heroSub: {
     fontSize: "1.05rem",
-    color: "#888",
+    color: "#bbb",
     lineHeight: 1.7,
     marginBottom: "2.5rem",
     maxWidth: "420px",
@@ -490,12 +490,13 @@ const styles = {
   heroVisual: {
     flex: "0 1 480px",        // ← controls image column width
     display: "flex",
-    alignItems: "stretch"
+    alignItems: "center",      // ← vertical center
+    justifyContent: "center",  // ← horizontal center
   },
   speakerBox: {
     width: "90%",
     height: "90%",
-    minHeight: "500px",
+    minHeight: "400px",
     objectFit: "cover",
   },
   divider: {
