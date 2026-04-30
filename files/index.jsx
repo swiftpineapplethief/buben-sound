@@ -106,10 +106,6 @@ export default function App() {
         </div>
         <div style={styles.heroInner}>
           <p style={styles.eyebrow}>— Sound Rental · Nashville, TN</p>
-          <h1 style={styles.heroTitle}>
-            Big Sound.<br />
-            <span style={styles.heroTitleStroke}>Simple Rental.</span>
-          </h1>
           <p style={styles.heroSub}>
             Professional PA system with mixer available for your event. Request a booking in minutes.
           </p>
