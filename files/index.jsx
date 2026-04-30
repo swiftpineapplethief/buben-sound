@@ -10,12 +10,12 @@ const GEAR = {
   description:
     "Professional-grade 15-inch PA speaker with a full-channel mixer. Ideal for small venues, outdoor events, rehearsals, parties, and presentations.",
   specs: [
-    { label: "Speaker", value: '15" Full-Range PA' },
-    { label: "Power", value: "1000W Peak" },
+    { label: "Speaker", value: '15" Electro Voice ZLX-15 BT' },
+    { label: "Power", value: "1000W Peak (Powered)" },
     { label: "Mixer", value: "Multi-channel with EQ" },
-    { label: "Coverage", value: "Up to ~200 people" },
-    { label: "Includes", value: "Cables, stand, setup guide" },
-    { label: "Rental Period", value: "Daily / Weekend" },
+   // { label: "Coverage", value: "Up to ~200 people" },
+    { label: "Includes", value: "Cables, Stands, 10 Channel Yamaha mixer with built-in FX" },
+   // { label: "Rental Period", value: "Daily / Weekend" },
   ],
 };
 
@@ -102,7 +102,7 @@ export default function App() {
       {/* HERO */}
       <section id="home" style={styles.hero}>
         <div style={styles.heroVisual}>
-          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} />
+          <img src="/speaker.jpg" alt="PA System" style={styles.heroImg} class="center"/>
         </div>
         <div style={styles.heroInner}>
           <p style={styles.eyebrow}>— Sound Rental · Nashville, TN</p>
