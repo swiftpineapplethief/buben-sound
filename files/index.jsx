@@ -261,8 +261,8 @@ export default function App() {
         <div style={styles.contactGrid}>
           {[
             { label: "Email", val: "booking@bubensound.com", href: "mailto:booking@bubensound.com" },
-            { label: "Location", val: "Nashville, TN", href: null },
-            { label: "Response Time", val: "Within 24 hours", href: null },
+            { label: "Location", val: "704 Wilsonwood Pl Nashville, TN 37206", href: null },
+            { label: "Phone", val: "(615) 403-7118", href: null },
           ].map((c) => (
             <div key={c.label} style={styles.contactCard}>
               <span style={styles.contactLabel}>{c.label}</span>
