@@ -14,7 +14,7 @@ const GEAR = {
     { label: "Power", value: "1000W Peak (Powered)" },
     { label: "Mixer", value: "Multi-channel with EQ" },
    // { label: "Coverage", value: "Up to ~200 people" },
-    { label: "Includes", value: "Cables, Stands, 10 Channel Yamaha mixer with built-in FX" },
+    { label: "Includes", value: "Cables, Stands, 10 Channel Mixer" },
    // { label: "Rental Period", value: "Daily / Weekend" },
   ],
 };
@@ -107,7 +107,7 @@ export default function App() {
         <div style={styles.heroInner}>
           <p style={styles.eyebrow}>— Sound Rental · Nashville, TN</p>
           <p style={styles.heroSub}>
-            Professional PA system with mixer available for your event. Request a booking in minutes.
+            Need sound in Nashville? Book with Buben Sound.
           </p>
           <div style={styles.heroCtas}>
             <button style={styles.ctaPrimary} onClick={() => scrollTo("book")}>
@@ -237,7 +237,7 @@ export default function App() {
                 <textarea name="notes" value={form.notes} onChange={handleFormChange} style={styles.textarea} rows={4} placeholder="Venue address, setup time, questions..." />
               </div>
               {formStatus === "error" && (
-                <p style={styles.errorMsg}>Something went wrong. Please email us directly at sounds.of.buben@gmail.com or (615) 403-7118</p>
+                <p style={styles.errorMsg}>Something went wrong. Please email us directly at booking@bubensound.com or (615) 403-7118</p>
               )}
               <button
                 style={{ ...styles.ctaPrimary, marginTop: "1.5rem", opacity: formStatus === "sending" ? 0.6 : 1 }}
@@ -260,7 +260,7 @@ export default function App() {
         <h2 style={styles.sectionTitle}>Contact</h2>
         <div style={styles.contactGrid}>
           {[
-            { label: "Email", val: "hello@bubensound.com", href: "mailto:hello@bubensound.com" },
+            { label: "Email", val: "booking@bubensound.com", href: "mailto:booking@bubensound.com" },
             { label: "Location", val: "Nashville, TN", href: null },
             { label: "Response Time", val: "Within 24 hours", href: null },
           ].map((c) => (
@@ -496,7 +496,7 @@ const styles = {
   speakerBox: {
     width: "100%",
     maxWidth: "420px",    // ← controls max width
-    height: "auto",       // ← lets it scale naturally
+    height: "clamp(300px, 50vw, 100vh)",       
     objectFit: "contain",
     objectPosition: "center",
   },
