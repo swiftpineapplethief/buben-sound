@@ -12,9 +12,9 @@ const GEAR = {
   specs: [
     { label: "Speaker", value: '15" Electro Voice ZLX-15 BT' },
     { label: "Power", value: "1000W Peak (Powered)" },
-    { label: "Mixer", value: "Multi-channel with EQ" },
+    { label: "Mixer", value: "Yamaha MG10XU 10 Channels, Built in FX Mixer" },
    // { label: "Coverage", value: "Up to ~200 people" },
-    { label: "Includes", value: "Cables, Stands, 10 Channel Mixer" },
+    { label: "Includes", value: "Cables, Stands, Mixer, Microphone" },
    // { label: "Rental Period", value: "Daily / Weekend" },
   ],
 };
