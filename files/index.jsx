@@ -158,7 +158,7 @@ export default function App() {
           {[
             { n: "01", t: "Pick a Date", d: "Check my calendar for available dates." },
             { n: "02", t: "Submit Request", d: "Fill in your event details and send a booking request" },
-            { n: "03", t: "Pick Up", d: "I'll send you my address to pick up in East Nashville 37206 :), pay and sign quick contract." },
+            { n: "03", t: "Pick Up", d: "I'll send you my address to pick up in East Nashville 37206, pay and sign quick contract." },
             { n: "04", t: "Return", d: "Return on agreed date (please)!." },
           ].map((s) => (
             <div key={s.n} style={styles.stepCard}>
@@ -261,7 +261,7 @@ export default function App() {
         <div style={styles.contactGrid}>
           {[
             { label: "Email", val: "booking@bubensound.com", href: "mailto:booking@bubensound.com" },
-            { label: "Location", val: "704 Wilsonwood Pl Nashville, TN 37206", href: null },
+            { label: "Location", val: "704 Wilsonwood Pl. \n Nashville, TN 37206", href: null },
             { label: "Phone", val: "(615) 403-7118", href: null },
           ].map((c) => (
             <div key={c.label} style={styles.contactCard}>
